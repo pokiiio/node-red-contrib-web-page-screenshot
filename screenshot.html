@@ -1,0 +1,35 @@
+<script type="text/javascript">
+    RED.nodes.registerType('screenshot', {
+        category: 'function',
+        color: '#c0deed',
+        defaults: {
+            name: {
+                value: ''
+            },
+            url: {
+                value: 'http://www.example.com/'
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'white-globe.png',
+        label: function () {
+            return this.name || 'screenshot';
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="screenshot">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-url">Web Page URL</label>
+        <input type="text" id="node-input-url" placeholder="Web Page URL">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="screenshot">
+    <p>Take screenshots of web pages.</p>
+</script>
