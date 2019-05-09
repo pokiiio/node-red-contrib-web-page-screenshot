@@ -2,7 +2,7 @@ module.exports = function (RED) {
     function ScreenshotNode(config) {
         RED.nodes.createNode(this, config);
         let node = this;
-        let url = config.cityid;
+        let url = config.url;
         let puppeteer = require('puppeteer');
 
         if (!url) {
