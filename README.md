@@ -16,5 +16,6 @@ npm install node-red-contrib-web-page-screenshot
 
 ## Details and Issues
 
- - This node uses puppeteer for taking screenshots.
+ - This node uses `puppeteer` for taking screenshots.
  - This node currently does not work on ARM environment.
+ - That is due to `chromium` included in `puppeteer`, the workaround will be released soon. 
