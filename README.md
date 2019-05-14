@@ -53,5 +53,9 @@ You can see the screenshot on a web page.
 ## Details and Issues
 
  - This node uses `puppeteer` for taking screenshots.
- - This node currently does not work on ARM environment.
- - That is due to `chromium` included in `puppeteer`, the workaround will be released soon. 
+ - ~This node currently does not work on ARM environment.~
+ - **Now this node is also available on Raspberry Pi (ARM environment).**
+    - Install headless-compatible `chromium-browser`.
+    - Configure the path at the setting screen like following.
+
+![ポキオ Node-RED スクリーンショット puppeteer](https://lh3.googleusercontent.com/0mcWWpTsCMVrT7ajL9GSK6GarGhxRCLYE-nL5K0A26Ff6i3i2MexhBGkGmlN3SCwohGi1YWoVk8-tfSwnrDyCsOVhxNF6kpRDeGzHNIDFf-9Vg44PQCQZZJj2zm-Awdx4ozmLAOkB18=s600 "ポキオ Node-RED スクリーンショット puppeteer")
