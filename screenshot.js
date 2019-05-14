@@ -3,15 +3,21 @@ module.exports = function (RED) {
         RED.nodes.createNode(this, config);
         let node = this;
         let url = config.url;
+        let path = config.path;
         let puppeteer = require('puppeteer');
+        let option = {};
 
         if (!url) {
             // set to default.
             url = 'http://www.example.com/';
         }
 
+        if (path) {
+            option.executablePath = path;
+        }
+
         node.on('input', function (msg) {
-            puppeteer.launch().then(async browser => {
+            puppeteer.launch(option).then(async browser => {
                 const option = {
                     type: 'png',
                     fullPage: true,
