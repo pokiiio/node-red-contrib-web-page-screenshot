@@ -19,6 +19,28 @@ npm install node-red-contrib-web-page-screenshot
  - This node takes a screenshot as PNG image, and encodes with base64.
  - The base64 string will be returned.
 
+## Settings
+
+In setting menu, there are some items like below.
+
+
+![ポキオ Node-RED スクリーンショット puppeteer](https://lh3.googleusercontent.com/0mcWWpTsCMVrT7ajL9GSK6GarGhxRCLYE-nL5K0A26Ff6i3i2MexhBGkGmlN3SCwohGi1YWoVk8-tfSwnrDyCsOVhxNF6kpRDeGzHNIDFf-9Vg44PQCQZZJj2zm-Awdx4ozmLAOkB18=s600 "ポキオ Node-RED スクリーンショット puppeteer")
+
+### Name (Optional)
+
+You can set any name to the node. Blank is allowed.
+
+### Web Page URL (Optional)
+
+URL which you want to take a screenshot. If blank, this node will take a screenshot of http://example.com .
+
+### executablePath (Optional)
+
+You can specify chromium/chrome executable with the path. For those who use x86 arch, this can be blank, however, if you use this node on ARM arch (e.g. Raspberry Pi), you have to install headless-mode-available `chromium-browser` and set the path.
+
+> Fortunately, [Raspbian OS](https://www.raspberrypi.org/downloads/raspbian/) (as of ver. April 2019) includes compatible `chromium-browser`, so just set `/usr/bin/chromium-browser` to this blank.
+
+
 ## Example
 
 
@@ -53,9 +75,3 @@ You can see the screenshot on a web page.
 ## Details and Issues
 
  - This node uses `puppeteer` for taking screenshots.
- - ~This node currently does not work on ARM environment.~
- - **Now this node is also available on Raspberry Pi (ARM environment).**
-    - Install headless-compatible `chromium-browser`.
-    - Configure the path at the setting screen like following.
-
-![ポキオ Node-RED スクリーンショット puppeteer](https://lh3.googleusercontent.com/0mcWWpTsCMVrT7ajL9GSK6GarGhxRCLYE-nL5K0A26Ff6i3i2MexhBGkGmlN3SCwohGi1YWoVk8-tfSwnrDyCsOVhxNF6kpRDeGzHNIDFf-9Vg44PQCQZZJj2zm-Awdx4ozmLAOkB18=s600 "ポキオ Node-RED スクリーンショット puppeteer")
