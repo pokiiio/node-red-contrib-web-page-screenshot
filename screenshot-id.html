@@ -1,0 +1,49 @@
+<script type="text/javascript">
+    RED.nodes.registerType('screenshot-id', {
+        category: 'function',
+        color: '#c0deed',
+        defaults: {
+            name: {
+                value: ''
+            },
+            url: {
+                value: 'http://www.example.com/'
+            },
+            idname: {
+                value: ''
+            },
+            path: {
+                value: ''
+            }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'white-globe.png',
+        label: function () {
+            return this.name || 'screenshot-id';
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="screenshot-id">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-url">Web Page URL</label>
+        <input type="text" id="node-input-url" placeholder="Web Page URL">
+    </div>
+    <div class="form-row">
+        <label for="node-input-idname">ID Name</label>
+        <input type="text" id="node-input-idname" placeholder="ID Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-path">executablePath(optional)</label>
+        <input type="text" id="node-input-path" placeholder="executablePath(optional)">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="screenshot-id">
+    <p>Take screenshots of a specific ID element of web pages.</p>
+</script>

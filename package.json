@@ -24,7 +24,9 @@
   "homepage": "https://github.com/pokiiio/node-red-contrib-web-page-screenshot#readme",
   "node-red": {
     "nodes": {
-      "screenshot": "screenshot.js"
+      "screenshot": "screenshot.js",
+      "screenshot-class": "screenshot-class.js",
+      "screenshot-id": "screenshot-id.js"
     }
   },
   "dependencies": {
