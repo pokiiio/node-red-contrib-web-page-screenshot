@@ -40,6 +40,14 @@ You can specify chromium/chrome executable with the path. For those who use x86 
 
 > Fortunately, [Raspbian OS](https://www.raspberrypi.org/downloads/raspbian/) (as of ver. April 2019) includes compatible `chromium-browser`, so just set `/usr/bin/chromium-browser` to this blank.
 
+### [UPDATED] Class Name (only in `screenshot-class` node)
+
+For partial screenshots, you can specify a class name of element you want to take screenshots. If blank, a whole screenshot will be taken.
+
+### [UPDATED] ID Name (only in `screenshot-id` node)
+
+For partial screenshots, you can specify a ID name of element you want to take screenshots. If blank, a whole screenshot will be taken.
+
 
 ## Example
 
