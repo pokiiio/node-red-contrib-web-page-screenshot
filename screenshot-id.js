@@ -2,22 +2,33 @@ module.exports = function (RED) {
     function ScreenshotIdNode(config) {
         RED.nodes.createNode(this, config);
         let node = this;
-        let url = config.url;
         let path = config.path;
-        let idName = config.idname;
         let puppeteer = require('puppeteer');
         let option = {};
-
-        if (!url) {
-            // set to default.
-            url = 'http://www.example.com/';
-        }
 
         if (path) {
             option.executablePath = path;
         }
 
         node.on('input', function (msg) {
+            let url;
+            let idName;
+
+            if (msg.url) {
+                url = msg.url;
+            } else if (config.url) {
+                url = config.url;
+            } else {
+                // set to default.
+                url = 'http://www.example.com/';
+            }
+
+            if (msg.idname) {
+                idName = msg.idname;
+            } else if (config.idname) {
+                idName = config.idname
+            }
+
             puppeteer.launch(option).then(async browser => {
                 let option = {};
 
