@@ -33,7 +33,12 @@ module.exports = function (RED) {
                 let option = {};
 
                 const page = await browser.newPage();
-                await page.goto(url);
+                if (config.wait === 'delay') {
+                    await page.goto(url)
+                    await new Promise(resolve => setTimeout(resolve, config.delay));
+                } else {
+                    await page.goto(url, { waitUntil: config.wait });
+                }
 
                 if (idName) {
                     const clip = await page.$eval('#' + idName, item => {

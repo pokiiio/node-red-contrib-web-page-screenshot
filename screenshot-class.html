@@ -3,17 +3,25 @@
         category: 'function',
         color: '#c0deed',
         defaults: {
+            delay: {
+                value: 5000,
+                required: false
+            },
+            classname: {
+                value: ''
+            },
             name: {
+                value: ''
+            },
+            path: {
                 value: ''
             },
             url: {
                 value: 'http://www.example.com/'
             },
-            classname: {
-                value: ''
-            },
-            path: {
-                value: ''
+            wait: {
+                value: 'load',
+                required: true
             }
         },
         inputs: 1,
@@ -21,6 +29,23 @@
         icon: 'white-globe.png',
         label: function () {
             return this.name || 'screenshot-class';
+        },
+        oneditprepare: function () {
+            try {
+                var inputWait = $('#node-input-wait');
+                var inputDelay = $('#form-row-delay')
+                inputWait.change(showDelay);
+            } catch (err) {
+                console.error(err);
+            }
+
+            function showDelay() {
+                if (inputWait.val() === 'delay') {
+                    inputDelay.show();
+                } else {
+                    inputDelay.hide();
+                }
+            }
         }
     });
 </script>
@@ -39,11 +64,32 @@
         <input type="text" id="node-input-classname" placeholder="Class Name">
     </div>
     <div class="form-row">
-        <label for="node-input-path">executablePath(optional)</label>
-        <input type="text" id="node-input-path" placeholder="executablePath(optional)">
+        <label for="node-input-wait">Wait Until</label>
+        <select id="node-input-wait" style="width:70%">
+            <option value="load">Load</option>
+            <option value="domcontentloaded">DOM Content Loaded</option>
+            <option value="networkidle0">No more than 0 Network Connections for 500ms</option>
+            <option value="networkidle2">No more than 2 Network Connections for 500ms</option>
+            <option value="delay">Fixed Delay</option>
+        </select>
+    </div>
+    <div class="form-row" id="form-row-delay">
+        <label for="node-input-delay">Delay</label>
+        <input type="number" id="node-input-delay" min="0" step="1" max="30000" placeholder="duration in milliseconds">
     </div>
 </script>
 
 <script type="text/x-red" data-help-name="screenshot-class">
     <p>Take screenshots of a specific class element of web pages.</p>
+    <h3>Inputs</h3>
+        <h4>Wait Until</h4>
+        <p>Wait until an event before taking a screenshot. Defaults to Load.</p>
+        <ul>
+            <li><strong>Load</strong><br><p>consider navigation to be finished when the `load` event is fired.</p></li>
+            <li><strong>DOM Content Loaded</strong><br><p>consider navigation to be finished when the `DOMContentLoaded` event is fired.</p></li>
+            <li><strong>No more than 0 Network Connections for 500ms</strong><br><p>consider navigation to be finished when there are no more than 0 network connections for at least 500 ms.</p></li>
+            <li><strong>No more than 2 Network Connections for 500m</strong><br><p>consider navigation to be finished when there are no more than 2 network connections for at least 500 ms.</p></li>
+            <li><strong>Fixed Delay</strong><br><p>consider navigation to be finished when timer has elapsed and the `load` devent is fired.</p></li>
+        </ul>
+        <p>A maximum duration to wait is 30 seconds by default. See puppeteer documentation <a href="https://github.com/puppeteer/puppeteer/blob/main/docs/api.md#pagegotourl-options">here</a></p>
 </script>

@@ -40,6 +40,20 @@ You can specify chromium/chrome executable with the path. For those who use x86 
 
 > Fortunately, [Raspbian OS](https://www.raspberrypi.org/downloads/raspbian/) (as of ver. April 2019) includes compatible `chromium-browser`, so just set `/usr/bin/chromium-browser` to this blank.
 
+### Wait Until
+
+You can set the event to wait for before taking a screen shot.
+
+- _Load_ - consider navigation to be finished when the `load` event is fired.
+- _DOM Content Loaded_ - consider navigation to be finished when the `DOMContentLoaded` event is fired.
+- _No more than 0 Network Connections for 500ms_ - consider navigation to be finished when there are no more than 0 network connections for at least 500 ms.
+- _No more than 2 Network Connections for 500m_ - consider navigation to be finished when there are no more than 2 network connections for at least 500 ms.
+- _Fixed Delay_ - consider navigation to be finished when timer has elapsed and the `load` devent is fired. Timer value set in the settings in milliseconds. Maximum of 30s.
+
+### [UPDATED]
+
+Add Wait Until setting
+
 ### [UPDATED] Class Name (only in `screenshot-class` node)
 
 For partial screenshots, you can specify a class name of element you want to take screenshots. If blank, a whole screenshot will be taken.
