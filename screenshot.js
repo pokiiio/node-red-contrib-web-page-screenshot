@@ -29,7 +29,12 @@ module.exports = function (RED) {
                     encoding: 'base64'
                 };
                 const page = await browser.newPage();
-                await page.goto(url);
+                if (config.wait === 'delay') {
+                    await page.goto(url)
+                    await new Promise(resolve => setTimeout(resolve, config.delay));
+                } else {
+                    await page.goto(url, { waitUntil: config.wait });
+                }
                 const base64String = await page.screenshot(option);
                 await browser.close();
 
